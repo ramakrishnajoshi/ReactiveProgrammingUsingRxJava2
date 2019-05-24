@@ -1,7 +1,9 @@
 package com.example.reactiveprogrammingusingrxjava2;
 
+import android.content.Context;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.Toast;
 
 import java.util.concurrent.TimeUnit;
@@ -27,7 +29,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        System.out.println("MainActivity.onResume threadId : " + Thread.currentThread().getId());
+        logMessage("MainActivity.onResume threadId : " + Thread.currentThread().getId());
         justOperatorWorking();
     }
 
@@ -37,24 +39,24 @@ public class MainActivity extends AppCompatActivity {
         Observer observer = new Observer() {
             @Override
             public void onSubscribe(Disposable d) {
-                System.out.println("MainActivity.onSubscribe");
+                logMessage("MainActivity.onSubscribe");
             }
 
             @Override
             public void onNext(Object o) {
-                System.out.println("onNext threadId : " + Thread.currentThread().getId());
-                System.out.println("o = [" + o.toString() + "]");
+                logMessage("onNext threadId : " + Thread.currentThread().getId() + " item:" + o.toString());
                 Toast.makeText(MainActivity.this, " onNext" + o.toString() , Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onError(Throwable e) {
-                System.out.println("e = [" + e + "]");
+                logMessage("onError = [" + e + "]");
+                Toast.makeText(MainActivity.this, " onError" + e.getLocalizedMessage() , Toast.LENGTH_LONG).show();
             }
 
             @Override
             public void onComplete() {
-                System.out.println("MainActivity.onComplete");
+                logMessage("MainActivity.onComplete");
             }
         };
 
@@ -64,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
                 .map(new Function<Long, Object>() {
                     @Override
                     public Object apply(Long aLong) {
-                        System.out.println("map operator .apply ThreadId : " + Thread.currentThread().getId());
+                        logMessage("First map operator .apply ThreadId : " + Thread.currentThread().getId());
                         return aLong + 1;
                     }
                 })
@@ -76,15 +78,14 @@ public class MainActivity extends AppCompatActivity {
                             return true;
                         else
                             return false;
-
                     }
                 })
                 .distinctUntilChanged()
-                .observeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread()) //whatever is executed downstream would be run on ui thread where observer is run.
                 .map(new Function<Object, Object>() {
                     @Override
                     public Object apply(Object o) {
-                        System.out.println("map operator2 .apply ThreadId : " + Thread.currentThread().getId());
+                        logMessage("Second map operator2 .apply ThreadId : " + Thread.currentThread().getId());
                         return o;
                     }
                 })
@@ -95,10 +96,12 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         public Object apply(Long aLong)  {
-            System.out.println("map operator .apply ThreadId : " + Thread.currentThread().getId());
+            logMessage("map operator .apply ThreadId : " + Thread.currentThread().getId());
             return (Object) aLong;
         }
     }
 
-
+    void logMessage(String message){
+        Log.e(this.getPackageName(), message);
+    }
 }
