@@ -46,7 +46,7 @@ public class RetrofitAPICallActivity extends AppCompatActivity {
         httpClient.addInterceptor(logging);
 
         Retrofit retrofit = new Retrofit.Builder()
-                                .addConverterFactory(GsonConverterFactory.create()) //From Retrofit 2.0 converter are a must
+                                .addConverterFactory(GsonConverterFactory.create()) //From Retrofit 2.0 converter is must
                                 .client(httpClient.build())     // For intercepting requests/responses
                                 .baseUrl("http://www.mocky.io/v2/")
                                 .build();
@@ -54,9 +54,10 @@ public class RetrofitAPICallActivity extends AppCompatActivity {
         RetrofitNetworkCallBackend networkCallBackend = retrofit.create(RetrofitNetworkCallBackend.class);
         networkCallBackend.getDetails().enqueue(new Callback<Object>() {
             /*
-            * Invoked for a received HTTP response.
+             * Invoked for a received HTTP response.
              * Note: An HTTP response may still indicate an application-level failure such as a 404 or 500.
-             * Call {@link Response#isSuccessful()} to determine if the response indicates success.*/
+             * Call {@link Response#isSuccessful()} to determine if the response indicates success.
+             * */
             @Override
             public void onResponse(Call<Object> call, Response<Object> response) {
                 if (response.isSuccessful()) {
@@ -78,7 +79,7 @@ public class RetrofitAPICallActivity extends AppCompatActivity {
             @Override
             public void onFailure(Call<Object> call, Throwable throwable) {
                 textView.setText("Error : " + throwable.getLocalizedMessage());
-                Toast.makeText(RetrofitAPICallActivity.this, "Successful" + throwable.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(RetrofitAPICallActivity.this, "Failure" + throwable.getLocalizedMessage(), Toast.LENGTH_SHORT).show();
             }
         });
     }
