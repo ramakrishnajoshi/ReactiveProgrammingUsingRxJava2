@@ -50,7 +50,4 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.6.0'
     //An Adapter for adapting RxJava 2.x types.
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.2.0'
-
-
-
 }
