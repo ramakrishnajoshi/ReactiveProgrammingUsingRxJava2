@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void justOperatorWorking() {
+        //Emit 0,1,2,3... after 2 seconds from calling this function and with a gap of 3s in-between emissions.
         Observable<Long> observable = Observable.interval(2, 3, TimeUnit.SECONDS);
 
         Observer observer = new Observer() {
@@ -61,43 +62,42 @@ public class MainActivity extends AppCompatActivity {
         };
 
         observable
-                .subscribeOn(Schedulers.io())//whatever is executed downstream would be run on thread where observable is run (non-ui thread)
-                //.map(x -> x+1) //using lambda
-                .map(new Function<Long, Object>() {
+                .subscribeOn(Schedulers.io()) //from here code is run on a new io thread(non-ui thread).
+                .map(new Function<Long, Long>() {
                     @Override
-                    public Object apply(Long aLong) {
-                        logMessage("First map operator .apply ThreadId : " + Thread.currentThread().getId());
-                        return aLong + 1;
+                    public Long apply(Long aLong) throws Exception {
+                       logMessage(aLong.toString());
+                       return aLong /*+ 1*/;
                     }
                 })
-               // .map(new TimeConverter<Long, Object>())
-                .filter(new Predicate<Object>() {
-                    @Override
-                    public boolean test(Object o) throws Exception {
-                        if ((Long)o % 2 == 0)
-                            return true;
-                        else
-                            return false;
-                    }
-                })
-                .distinctUntilChanged()
-                .observeOn(AndroidSchedulers.mainThread()) //whatever is executed downstream would be run on ui thread where observer is run.
-                .map(new Function<Object, Object>() {
-                    @Override
-                    public Object apply(Object o) {
-                        logMessage("Second map operator2 .apply ThreadId : " + Thread.currentThread().getId());
-                        return o;
-                    }
-                })
+                //.map(new TimeConverter<Long, Long>())
+//                .filter(new Predicate<Object>() {
+//                    @Override
+//                    public boolean test(Object o) throws Exception {
+//                        if ((Long)o % 2 == 0)
+//                            return true;
+//                        else
+//                            return false;
+//                    }
+//                })
+               // .filter((Predicate<Object>) o -> (Long) o % 2 == 0) //same thing as above but using lambda
+               // .distinctUntilChanged()
+                .observeOn(AndroidSchedulers.mainThread()) //from here the control is switched to ui-thread and code is run on ui thread.
+                .map(x -> x/* * x*/)
+                .skipLast(5)
                 .subscribe(observer);
     }
 
-    class TimeConverter<Long, Object> implements Function<Long, Object> {
+    /*
+    * This class and it's function does nothing. IT has been written just to demonstrate various
+    * ways in which value can be transformed and returned back.
+    * */
+    class TimeConverter implements Function<Long, Long> {
 
         @Override
-        public Object apply(Long aLong)  {
+        public Long apply(Long aLong)  {
             logMessage("map operator .apply ThreadId : " + Thread.currentThread().getId());
-            return (Object) aLong;
+            return  aLong;
         }
     }
 
