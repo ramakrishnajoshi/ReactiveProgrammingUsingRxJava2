@@ -22,7 +22,6 @@ public class RxConcept1Just {
             Disposable disposable = new Disposable() {
                 @Override
                 public void dispose() {
-
                 }
 
                 @Override
@@ -65,7 +64,6 @@ public class RxConcept1Just {
         Observer observer = new Observer() {
             @Override
             public void onSubscribe(Disposable d) {
-
             }
 
             @Override
@@ -75,12 +73,10 @@ public class RxConcept1Just {
 
             @Override
             public void onError(Throwable e) {
-
             }
 
             @Override
             public void onComplete() {
-
             }
         };
 

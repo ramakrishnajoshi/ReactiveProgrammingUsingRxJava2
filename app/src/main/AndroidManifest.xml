@@ -15,20 +15,15 @@
         tools:ignore="GoogleAppIndexingWarning"
         android:networkSecurityConfig="@xml/network_security_config">
 
-        <activity android:name=".retrofit_api_calls.RetrofitAPICallActivity">
-            <!--<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
-        </activity>
-
-        <activity android:name=".MainActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
-        </activity>
-        <activity android:name=".rx_api_calls.RxAPICallActivity" >
+        <activity android:name=".retrofit_api_calls.RetrofitAPICallActivity"/>
+        <activity android:name=".MainActivity"/>
+        <activity android:name=".rx_api_calls.RxAPICallActivity"/>
+        <!--<activity android:name="._operators.Rx_b_BufferAndDebounce" />-->
+        <activity android:name="._operators.Rx_c_MergeOperator" />
+        <activity android:name="._operators.Rx_d_ConcatOperator"/>
+        <activity android:name=".case_studies.Rx_NonUIThreadCanAccessViews" />
+        <activity android:name="._operators.Rx_a_CreateOperator" />
+        <activity android:name="._operators.Rx_b_BufferAndDebounce" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
