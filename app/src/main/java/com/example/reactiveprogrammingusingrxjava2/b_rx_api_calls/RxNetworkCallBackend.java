@@ -1,7 +1,6 @@
-package com.example.reactiveprogrammingusingrxjava2.rx_api_calls;
+package com.example.reactiveprogrammingusingrxjava2.b_rx_api_calls;
 
 import io.reactivex.Observable;
-import retrofit2.Call;
 import retrofit2.http.GET;
 
 public interface RxNetworkCallBackend {

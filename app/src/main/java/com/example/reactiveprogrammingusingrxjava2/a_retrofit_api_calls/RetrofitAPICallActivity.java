@@ -1,4 +1,4 @@
-package com.example.reactiveprogrammingusingrxjava2.retrofit_api_calls;
+package com.example.reactiveprogrammingusingrxjava2.a_retrofit_api_calls;
 
 import android.annotation.SuppressLint;
 import android.support.v7.app.AppCompatActivity;

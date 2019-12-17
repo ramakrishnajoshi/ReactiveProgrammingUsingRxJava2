@@ -1,22 +1,13 @@
-package com.example.reactiveprogrammingusingrxjava2._operators.concurrentcalls;
+package com.example.reactiveprogrammingusingrxjava2.c_operators.concurrentcalls;
 import android.annotation.SuppressLint;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.ViewModel;
 import android.util.Log;
 
-import com.example.reactiveprogrammingusingrxjava2._operators.concurrentcalls.models.ProfileInfo;
-import com.example.reactiveprogrammingusingrxjava2._operators.concurrentcalls.models.WalletInfo;
-
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.URL;
-
 import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 

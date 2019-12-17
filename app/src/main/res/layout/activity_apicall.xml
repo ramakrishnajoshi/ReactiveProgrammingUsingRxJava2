@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".retrofit_api_calls.RetrofitAPICallActivity">
+    tools:context=".a_retrofit_api_calls.RetrofitAPICallActivity">
 
     <TextView
         android:id="@+id/textView2"

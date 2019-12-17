@@ -1,4 +1,4 @@
-package com.example.reactiveprogrammingusingrxjava2._operators.concurrentcalls;
+package com.example.reactiveprogrammingusingrxjava2.c_operators.concurrentcalls;
 
 import android.arch.lifecycle.Observer;
 import android.arch.lifecycle.ViewModelProviders;

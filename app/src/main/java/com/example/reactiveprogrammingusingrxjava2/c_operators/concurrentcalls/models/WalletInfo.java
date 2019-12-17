@@ -1,4 +1,4 @@
-package com.example.reactiveprogrammingusingrxjava2._operators.concurrentcalls.models;
+package com.example.reactiveprogrammingusingrxjava2.c_operators.concurrentcalls.models;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

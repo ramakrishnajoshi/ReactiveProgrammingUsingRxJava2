@@ -1,4 +1,4 @@
-package com.example.reactiveprogrammingusingrxjava2._operators;
+package com.example.reactiveprogrammingusingrxjava2.c_operators;
 
 
 import com.example.reactiveprogrammingusingrxjava2.BaseActivity;
