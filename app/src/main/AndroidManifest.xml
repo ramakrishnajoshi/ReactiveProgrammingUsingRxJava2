@@ -3,29 +3,37 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.reactiveprogrammingusingrxjava2">
 
-    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning"
-        android:networkSecurityConfig="@xml/network_security_config">
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".retrofit_api_calls.RetrofitAPICallActivity" />
+        <activity android:name=".MainActivity" />
+        <activity android:name=".rx_api_calls.RxAPICallActivity">
 
-        <activity android:name=".retrofit_api_calls.RetrofitAPICallActivity"/>
-        <activity android:name=".MainActivity"/>
-        <activity android:name=".rx_api_calls.RxAPICallActivity"/>
-        <!--<activity android:name="._operators.Rx_b_BufferAndDebounce" />-->
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
         <activity android:name="._operators.Rx_c_MergeOperator" />
         <activity android:name="._operators.Rx_d_ConcatOperator"/>
         <activity android:name=".case_studies.Rx_NonUIThreadCanAccessViews" />
         <activity android:name="._operators.Rx_a_CreateOperator" />
-        <activity android:name="._operators.Rx_b_BufferAndDebounce" >
+        <activity android:name="._operators.Rx_b_BufferAndDebounce" />
+        <activity android:name="._operators.concurrentcalls.ConcurrentAPICallActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

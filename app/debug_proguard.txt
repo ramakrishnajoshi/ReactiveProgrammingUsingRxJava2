@@ -21,12 +21,15 @@
 #-renamesourcefileattribute SourceFile
 
 # Set of ProGuard rules applied to release builds
+#
 -keepattributes SourceFile,LineNumberTable,Annotation,InnerClasses,Exceptions,Signature,EnclosingMethod
 -renamesourcefileattribute SourceFile
 
 #-dontobfuscate
 -dontoptimize
 -dontnote **
+# We own this code, and everything in this package is definitely defining our domain. Better not to have ProGuard messing with it
+-keep public class com.tottus.** { *; }
 # Retrofit
 -dontwarn retrofit2.**
 -dontwarn okio.**
@@ -52,8 +55,4 @@
 -dontwarn com.threatmetrix.**
 #-dontwarn com.google.android.gms.**
 
-#-keep class com.example.reactiveprogrammingusingrxjava2.rx_api_calls.model.** { *; }
 -keep class com.example.reactiveprogrammingusingrxjava2.rx_api_calls.model.** { *; }
-#-keepattributes *Annotation*                      // Keep Crashlytics annotations
-#-keepattributes SourceFile,LineNumberTable        // Keep file names/line numbers
-#-keep public class * extends java.lang.Exception  // Keep custom exceptions (opt)
