@@ -1,4 +1,4 @@
-package com.example.reactiveprogrammingusingrxjava2.rx_api_calls;
+package com.example.reactiveprogrammingusingrxjava2.b_rx_api_calls;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -9,7 +9,6 @@ import com.example.reactiveprogrammingusingrxjava2.R;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
-import io.reactivex.functions.Function;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;

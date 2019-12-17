@@ -1,4 +1,4 @@
-package com.example.reactiveprogrammingusingrxjava2.case_studies;
+package com.example.reactiveprogrammingusingrxjava2.d_case_studies;
 
 import android.os.Bundle;
 import android.os.Looper;
