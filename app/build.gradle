@@ -89,7 +89,12 @@ dependencies {
     //An Adapter for adapting RxJava 2.x types.
     implementation 'com.squareup.retrofit2:adapter-rxjava2:2.4.0'
 
+    //To accept response as string
     implementation 'com.squareup.retrofit2:converter-scalars:2.6.0'
+
+    //For Logging
+    implementation("com.squareup.okhttp3:logging-interceptor:4.9.0")
+    implementation 'androidx.recyclerview:recyclerview:1.1.0'
 
     //view-model
 //    implementation "android.arch.lifecycle:extensions:1.1.1"

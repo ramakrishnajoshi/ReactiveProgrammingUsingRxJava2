@@ -16,18 +16,21 @@
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".a_retrofit_api_calls.RetrofitAPICallActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".b_rx_api_calls.RxAPICallActivity"/>
+        <activity android:name=".b_rx_api_calls.RxAPICallActivity" />
         <activity android:name=".c_operators.Rx_c_MergeOperator" />
-        <activity android:name=".c_operators.Rx_d_ConcatOperator"/>
+        <activity android:name=".c_operators.Rx_d_ConcatOperator" />
         <activity android:name=".d_case_studies.Rx_NonUIThreadCanAccessViews" />
         <activity android:name=".c_operators.Rx_a_CreateOperator" />
         <activity android:name=".c_operators.Rx_b_BufferAndDebounce" />
-        <activity android:name=".c_operators.concurrentcalls.ConcurrentAPICallActivity" >
+        <activity android:name=".e_flatmap.UserPostsActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".c_operators.concurrentcalls.ConcurrentAPICallActivity">
+
         </activity>
     </application>
 
