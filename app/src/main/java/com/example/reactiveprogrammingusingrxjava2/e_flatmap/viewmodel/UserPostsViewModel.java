@@ -8,6 +8,7 @@ import com.example.reactiveprogrammingusingrxjava2.e_flatmap.model.ApiPost;
 import com.example.reactiveprogrammingusingrxjava2.e_flatmap.repository.UserPostsRepository;
 
 import java.util.List;
+import java.util.Random;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableSource;
@@ -21,44 +22,45 @@ import io.reactivex.schedulers.Schedulers;
 
 public class UserPostsViewModel extends ViewModel {
 
-    CompositeDisposable disposable = new CompositeDisposable();
-
-    UserPostsRepository repository = new UserPostsRepository();
-
     public MutableLiveData postsLiveData = new MutableLiveData<List<ApiPost>>();
+    public MutableLiveData postLiveData = new MutableLiveData<ApiPost>();
     public MutableLiveData commentLiveData = new MutableLiveData<List<ApiComment>>();
+    CompositeDisposable disposable = new CompositeDisposable();
+    UserPostsRepository repository = new UserPostsRepository();
 
     public void getPostsList() {
         getPosts()
             .flatMap(new Function<ApiPost, ObservableSource<ApiPost>>() {
                 @Override
                 public ObservableSource<ApiPost> apply(@NonNull ApiPost apiPost) throws Exception {
+                    int sleepTime = new Random().nextInt(3) * 1000;
+                    Thread.sleep(sleepTime);
                     return getPostComments(apiPost.getPostId(), apiPost);
                 }
             })
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-        .subscribe(new Observer<ApiPost>() {
-            @Override
-            public void onSubscribe(@NonNull Disposable d) {
+            .subscribe(new Observer<ApiPost>() {
+                @Override
+                public void onSubscribe(@NonNull Disposable d) {
 
-            }
+                }
 
-            @Override
-            public void onNext(@NonNull ApiPost apiPost) {
+                @Override
+                public void onNext(@NonNull ApiPost apiPost) {
 
-            }
+                }
 
-            @Override
-            public void onError(@NonNull Throwable e) {
+                @Override
+                public void onError(@NonNull Throwable e) {
 
-            }
+                }
 
-            @Override
-            public void onComplete() {
+                @Override
+                public void onComplete() {
 
-            }
-        });
+                }
+            });
     }
 
     private Observable<ApiPost> getPosts() {
@@ -79,7 +81,7 @@ public class UserPostsViewModel extends ViewModel {
     }
 
     //Observable<ApiComment> getPostComments(int postid) {
-    Observable<ApiPost> getPostComments(int postid, ApiPost post) {
+    private Observable<ApiPost> getPostComments(int postid, ApiPost post) {
         return repository
             .getPostComments(postid)
             .subscribeOn(Schedulers.io())
@@ -88,6 +90,7 @@ public class UserPostsViewModel extends ViewModel {
                 public ApiPost apply(@NonNull List<ApiComment> apiComments) throws Exception {
                     commentLiveData.postValue(apiComments);
                     post.setCommentList(apiComments);
+                    postLiveData.postValue(post);
                     return post;
                 }
             })
