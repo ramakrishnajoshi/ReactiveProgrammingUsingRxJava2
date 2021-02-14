@@ -1,6 +1,6 @@
 package com.example.reactiveprogrammingusingrxjava2;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import io.reactivex.Observable;
 import io.reactivex.Observer;

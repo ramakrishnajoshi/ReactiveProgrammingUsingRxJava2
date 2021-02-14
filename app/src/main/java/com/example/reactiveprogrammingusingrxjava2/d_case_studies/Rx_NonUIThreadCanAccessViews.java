@@ -2,7 +2,7 @@ package com.example.reactiveprogrammingusingrxjava2.d_case_studies;
 
 import android.os.Bundle;
 import android.os.Looper;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.widget.TextView;
 import com.example.reactiveprogrammingusingrxjava2.BaseActivity;
 import com.example.reactiveprogrammingusingrxjava2.R;

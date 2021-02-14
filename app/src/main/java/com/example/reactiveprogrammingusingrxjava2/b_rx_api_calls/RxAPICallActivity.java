@@ -2,7 +2,7 @@ package com.example.reactiveprogrammingusingrxjava2.b_rx_api_calls;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.TextView;
 import com.example.reactiveprogrammingusingrxjava2.R;

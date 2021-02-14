@@ -1,7 +1,7 @@
 package com.example.reactiveprogrammingusingrxjava2.c_operators;
 
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import com.example.reactiveprogrammingusingrxjava2.BaseActivity;
 import java.util.List;
 import java.util.concurrent.TimeUnit;

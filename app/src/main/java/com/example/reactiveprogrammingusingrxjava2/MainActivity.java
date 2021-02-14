@@ -1,7 +1,6 @@
 package com.example.reactiveprogrammingusingrxjava2;
 
-import android.content.Context;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
@@ -9,13 +8,10 @@ import android.widget.Toast;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
-import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.Function;
-import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
 
 public class MainActivity extends AppCompatActivity {

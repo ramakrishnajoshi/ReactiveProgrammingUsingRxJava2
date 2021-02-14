@@ -1,12 +1,15 @@
 package com.example.reactiveprogrammingusingrxjava2.c_operators.concurrentcalls;
 
+import com.example.reactiveprogrammingusingrxjava2.c_operators.concurrentcalls.models.ProfileInfo;
+import com.example.reactiveprogrammingusingrxjava2.c_operators.concurrentcalls.models.WalletInfo;
+
 import io.reactivex.Observable;
 import retrofit2.http.GET;
 
 public interface CustomerInfoBackend {
     @GET("/profile-info")
-    Observable<Object> getProfileInfo();
+    Observable<ProfileInfo> getProfileInfo();
 
     @GET("/wallet-info")
-    Observable<Object> getWalletInfo();
+    Observable<WalletInfo> getWalletInfo();
 }
